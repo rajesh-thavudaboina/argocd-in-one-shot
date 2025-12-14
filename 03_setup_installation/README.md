@@ -21,6 +21,12 @@ Before starting, ensure you have the following installed on your system:
 
 2. **Kind (Kubernetes in Docker)** → To create the cluster.
 
+  ```bash
+  [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+  chmod +x ./kind
+  sudo mv ./kind /usr/local/bin/kind
+  ```
+
    ```bash
    kind version
    ```
@@ -28,6 +34,13 @@ Before starting, ensure you have the following installed on your system:
    [Install Guide](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
 
 3. **kubectl** → To interact with the cluster.
+  ```bash
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  chmod +x kubectl
+  mkdir -p ~/.local/bin
+  mv ./kubectl ~/.local/bin/kubectl
+  ```
 
    ```bash
    kubectl version --client
@@ -36,6 +49,11 @@ Before starting, ensure you have the following installed on your system:
    [Install Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 4. **Helm (for Helm-based installation)**
+  ```bash
+  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
+  chmod 700 get_helm.sh
+  ./get_helm.sh
+  ```
 
    ```bash
    helm version
