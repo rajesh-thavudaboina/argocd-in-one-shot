@@ -61,6 +61,11 @@ Before starting, ensure you have the following installed on your system:
 
    [Install Guide](https://helm.sh/docs/intro/install/)
 
+5. **Install Kustomize**
+```bash
+  curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+  sudo mv kustomize /usr/local/bin/
+```
 ---
 
 > [!IMPORTANT]
@@ -80,9 +85,7 @@ Save your cluster config as `kind-config.yaml`:
 ```yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-networking:
-  apiServerAddress: "172.31.19.178"   # Change this to your EC2 private IP (run "hostname -I" to check or from your EC2 dashboard)
-  apiServerPort: 33893
+name: kubeflow
 nodes:
   - role: control-plane
     image: kindest/node:v1.33.1
